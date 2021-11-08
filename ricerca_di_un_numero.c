@@ -7,7 +7,7 @@ int ricerca(int selezione, int numeri[], int contatore)
     {
         if(selezione == numeri[i])
         {
-            return i;
+            return i - 1;
         }
     }
     return -1;
@@ -22,13 +22,12 @@ int main(int argc, char *argv[])
 
     int numeri[argc];
 
-    int Length = sizeof(numeri);
+    //int Length = sizeof(numeri);
     int contatore = 0;
-    for(int i = 1 ; i < Length; i++)
+    for(int i = 1 ; i < argc; i++)
     {
        if(atoi(argv[i]) == NULL)
        {
-           Array.Resize()
        }
        else
        {
