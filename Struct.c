@@ -1,7 +1,10 @@
-#include <studio.h>
+/// file Struct.c
+/// author Mattia Gallinaro
+/// date 8/11/2021
+#include <stdio.h>
 #define DIM 4
 #define MAX 10
-
+//definisco 
 //TYPEDEF struct{ char nome[MAX]; char cognome[MAX]; int eta;
 //}Persona_T;
 Persona_T InserisciPersona();//ritorna la persona appena inserita in base ai valori inseriti dall'utente
