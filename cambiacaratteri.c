@@ -4,7 +4,7 @@
 #define MAX 100
 
 void CambiaCaratteri(char stringa[MAX][MAX], char delete, char replace)
-{
+{//cambio il primo parametro con char * stringa[] o char ** stringa
     for(int i = 0; i < MAX;i++)
     {
         for(int j = 0; j < strlen(stringa[i]); j++)
