@@ -3,8 +3,13 @@
 #include <string.h>
 #define MAX 100
 
+<<<<<<< Updated upstream
 void CambiaCaratteri(char stringa[MAX][MAX], char delete, char replace)
 {//cambio il primo parametro con char * stringa[] o char ** stringa
+=======
+void CambiaCaratteri(char ** stringa, char delete, char replace)
+{
+>>>>>>> Stashed changes
     for(int i = 0; i < MAX;i++)
     {
         for(int j = 0; j < strlen(stringa[i]); j++)
@@ -16,7 +21,7 @@ void CambiaCaratteri(char stringa[MAX][MAX], char delete, char replace)
         }
     }
 }
-void scriviOutput(char * argv[], char stringa[100][100])
+void scriviOutput(char * argv[], char ** stringa)
 {
    FILE * stream;
    if((stream = fopen(argv[2], "w")) == NULL)
@@ -24,7 +29,7 @@ void scriviOutput(char * argv[], char stringa[100][100])
       printf("Impossibile aprire il file di scrittura\n");
       exit(5);
    }
-   fprintf(stream, "%s", stringa[100]);
+   fprintf(stream, "%s", stringa);
    fclose(stream);
 }
 int main(int argc,char * argv[])
