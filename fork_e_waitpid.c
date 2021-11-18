@@ -9,7 +9,7 @@ int main()
     f1 = fork();
     if (f1 == 0)
     {
-        printf("sono il figlio f1 del padre che mi vuole male\n");
+        printf("sono il figlio f1 del padre\n");
         g1 = fork();
         if (g1 == 0)
         {
@@ -25,15 +25,10 @@ int main()
                 exit(0);
             }
         }
-        waitpid(g1, &status, 0);
-        printf("il processo g1 è terminato\n");
-        waitpid(h1, &status, 0);
-        printf("il processo h1 è terminato\n");
-        exit(0);
     }
     else
     {
-        printf("sono il figlio f2 del padre che mi vuole male\n");
+        printf("sono il figlio f2 del padre\n");
         f2 = fork();
         if (f2 == 0)
         {
@@ -52,11 +47,6 @@ int main()
                     exit(0);
                 }
             }
-            printf("AHHHHHHH\n");
-            waitpid(g2, &status, 0);
-            printf("OHHHHHHH\n");
-            waitpid(h2, &status, 0);
-            exit(0);
         }
         else
         {

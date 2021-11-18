@@ -8,20 +8,6 @@
 #include <unistd.h>
 #include <wait.h>
 
-void ScriviSuFile(char fileInput[10])
-{
-    FILE *stream;
-    if ((stream = fopen(fileInput, "w")) == NULL)
-    {
-        printf("Impossibile aprire il file in cui scrivere la frase");
-        exit(4);
-    }
-    char stringa[100];
-    sprintf(stringa, "Ciao sono una persona");
-    fprintf(stream, "%s", stringa);
-    fclose(stream);
-}
-
 /**
  * @fn int main()
  * @brief funzione che si occupa di creare un figlio per la scrittura su file ed il padre che si occupa di leggere dal file
@@ -31,36 +17,62 @@ void ScriviSuFile(char fileInput[10])
  */
 int main(int argc, char *argv[])
 {
+    FILE *stream;
+    int pid1, pid2, pid3, statuts;
     char fileinput[10];
     sprintf(fileinput, "Testo.txt");
-    int pid = fork();
-    if (pid == 0)
+    if ((stream = fopen(fileInput, "w+")) == NULL)
     {
-        printf("So er figlio pazzo sgravato");
-        //ScriviSuFile(fileinput);
+        printf("Impossibile aprire il file in cui scrivere la frase");
+        exit(4);
+    }
+    pid1 = fork();
+    if (pid1 == 0)
+    {
+        printf("Sono il primo figlio");
         exit(1);
     }
     else
     {
-        printf("\nIo so er padre del figlio e leggo dal file del figlio fatto\n");
-        wait(0);
-        char stringa[100][100];
-        FILE *stream;
-        if ((stream = fopen(fileinput, "r")) == NULL)
+        pid2 = fork();
+        if(pid2 == 0)
         {
-            printf("Impossibile aprire il file da cui leggere la frase");
-            exit(5);
+            printf("Sono il secondo figlio");
+            exit(1);
         }
-        int numParole = 0;
-        while (!feof(stream))
+        else
         {
-            fscanf(stream, "%s\t", stringa[numParole]);
-            numParole++;
-        }
-        for (int i = 0; i < numParole; i++)
-            printf("%s ", stringa[i]);
+            pid3 = fork();
+            if(pid3 == 0)
+            {
+                printf("Sono il terzo figlio");
+                fpritnf(stream,"");
+                exit(1);
+            }
+            else
+            {
+                waitpid(pid3, &status, 0);
+                printf("\nSono il padre\n");
+                wait(0);
+                char stringa[100][100];
+                FILE *stream;
+                if ((stream = fopen(fileinput, "r")) == NULL)
+                {
+                printf("Impossibile aprire il file da cui leggere la frase");
+                exit(5);
+                }
+                int numParole = 0;
+                while (!feof(stream))
+                {
+                fscanf(stream, "%s\t", stringa[numParole]);
+                numParole++;
+                }
+                for (int i = 0; i < numParole; i++)
+                    printf("%s ", stringa[i]);
 
-        fclose(stream);
-        return (0);
+                 fclose(stream);
+                return (0);
+            }
+        }
     }
 }
