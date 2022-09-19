@@ -3,14 +3,13 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-#define tot 9
-#define dim 3
+#define tot 99000
+#define dim 33000
 
 
 int generaLunghezza(){
     int n = 0;
-    n =  (rand() % 17) + 3;
-    printf("\nGrandezza stringa : %d", n);
+    n =  (rand() % (20- 3)) + 3;
     return n;
 }
 
@@ -37,7 +36,7 @@ int controlloStringhe(char **strs, char *stringa, int index){
     return 0;
 }
 
-void scriviSuFile(){
+void scriviSuFile(char **strs1, char **strs2, char **strs3){
     FILE *fp;
     if((fp = fopen("output.txt", "w+")) == NULL){
         printf("Impossibile aprire il file output");
@@ -45,17 +44,25 @@ void scriviSuFile(){
     }
 
     for(int i = 0;i <  dim; i++){
-        fprintf(fp, "%s\n", "ciao");
-
+        fprintf(fp, "%s\n", strs1[i]);
     }
-
+    
+    for(int i = 0;i <  dim; i++){
+        fprintf(fp, "%s\n", strs2[i]);
+    }
+    
+    for(int i = 0;i <  dim; i++){
+        fprintf(fp, "%s\n", strs3[i]);
+    }
+    
+    fclose(fp);
 }
 int main()
 {
     char *strs1[dim];
     char *strs2[dim];
     char *strs3[dim];
-    int index1, index2, index3 = 0;
+    int index1, index2, index3 = {0};
     for(int i = 0; i < tot; i++){
         int n = generaLunghezza();
 
@@ -73,7 +80,7 @@ int main()
                 }
                 break;
             case 9 ... 14:
-                if(controlloStringhe(strs2, str, index2) == 1 || index2 != dim && index2 != 0 ){
+                if(controlloStringhe(strs2, str, index2) == 1 && index2 != dim && index2 != 0 ){
                     i--;
                 }
                 else{
@@ -92,6 +99,6 @@ int main()
                 break; 
         }
     }
-    //scriviSuFile();
+    scriviSuFile(strs1, strs2, strs3);
     return 0;
 }
