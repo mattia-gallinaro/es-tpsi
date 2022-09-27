@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <time.h>
 
 void PopolaArray(int array[], int grandezza)
 {
@@ -116,6 +116,7 @@ void Ordinamento(int array[], int grandezza){
 int main()
 {
     int grandezza = 0;
+    srand(time(NULL));
     do
     {
         printf("\nInserisci la grandezza dell'array: ");
@@ -128,7 +129,7 @@ int main()
     while (1)
     {
         int number = 0;
-        printf("\nPremi 1 per stampare gli elementi dell'array \nPremi 2 per eseguire la stampa inversa dell'array \nPremi 3 per eseguire la somma e la media dell'array\nPremi 4 per stampare tutti i numeri pari\nPremi 5 pre stampare tutti i numeri dispari\nPremi 6 per cercare il numero selezionato\nPremi 7 per eliminare un elemento dell'array\nPremi 8 per alternare a due a due i numeri dell'array\nPremi 9 per ordinare l'array\nSelezione: ");
+        printf("\nPremi 1 per stampare gli elementi dell'array \nPremi 2 per eseguire la stampa inversa dell'array \nPremi 3 per eseguire la somma e la media dell'array\nPremi 4 per stampare tutti i numeri pari\nPremi 5 pre stampare tutti i numeri dispari\nPremi 6 per cercare il numero selezionato\nPremi 7 per eliminare un elemento dell'array\nPremi 8 per alternare a due a due i numeri dell'array\nPremi 9 per ordinare l'array\nPremi 10 per terminare la selezione\nSelezione: ");
 
         scanf("%d", &number);
         switch(number)
@@ -171,10 +172,12 @@ int main()
         case 9: 
             Ordinamento(array, grandezza);
             break;
-        default:
-            printf("\n just why");
+        }
+        if(number == 10)
+        {
             break;
         }
+        
     }
 
     return 0;
