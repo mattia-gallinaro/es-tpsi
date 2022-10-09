@@ -33,8 +33,8 @@ int GeneraNumero(){
 }
 
 void OrdinaInverso(int array[], int lunghezza){
-    for(int i = 0; i < DIM; i++){
-        for(int j = i+1; j < DIM; j++){
+    for(int i = 0; i < lunghezza; i++){
+        for(int j = i+1; j < lunghezza; j++){
             if(array[i] < array[j]){
                 int number = array[i];
                 array[i] = array[j]; 
