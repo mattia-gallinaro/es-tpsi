@@ -106,6 +106,39 @@ void ScambiaPosizioni(char stringa[]){
     }
     printf("\nStringa con posizioni scambiate e': %s\n", copia);
 }
+
+void ContaVocaliEConsonanti(char stringa[]){
+    int vocali = 0;
+    int consonanti = 0;
+
+    for(int i = 0; i < strlen(stringa);i++){
+        if(tolower(stringa[i]) == 'a' || tolower(stringa[i]) == 'e' || tolower(stringa[i]) == 'i' || tolower(stringa[i]) == 'o' || tolower(stringa[i]) == 'u'){
+            vocali++;
+        }
+        else if(isalpha(stringa[i])){
+            consonanti++;
+        }
+    }
+    printf("\nIl numero di vocali e': %d\nIl numero di consonanti e': %d\n", vocali, consonanti);
+}
+int main(){
+    srand(time(NULL));
+    printf("Ora generero' una stringa randomica");
+    char stringa[DIM];
+    GeneraStringa(stringa);
+    StampaArray(stringa);
+    ContaAscii(stringa);
+    StampaArray(stringa);
+    RiordinaAlfebiticoStringa(stringa);
+    StampaArray(stringa);
+    ContaNumeri(stringa);
+    ContaCaratteriSpeciali(stringa);
+    StampaNumeriParieDispari(stringa);
+    RicercaCarattere(stringa);
+    ScambiaPosizioni(stringa);
+    ContaVocaliEConsonanti(stringa);
+    return 0;
+}
 int main(){
     srand(time(NULL));
     printf("Ora generero' una stringa randomica");
